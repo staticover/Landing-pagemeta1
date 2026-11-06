@@ -1,0 +1,313 @@
+<title>Onstra Websites</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+<style>
+/* Layout: Onstra's own look (white / black, Inter 900 uppercase, square 3px buttons, hairline-bordered grids, ghost watermark), reflowed mobile-first. Single committed light/black look, like onstra.world. */
+:root{
+  --black:#000000; --white:#ffffff; --light-bg:#f7f7f7; --line:#e8e8e8; --border:rgba(0,0,0,.09);
+  --on-light-mute:#333333; --on-light-faint:#555555;
+  --on-dark-mute:rgba(255,255,255,.6); --on-dark-faint:rgba(255,255,255,.35); --dark-line:rgba(255,255,255,.1);
+  --err:#c62828; --blue:#1d4ed8; --blue-dark:#1741b5; --text:#222222;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{color-scheme:light;scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--white);color:var(--black);line-height:1.6;-webkit-text-size-adjust:100%;overflow-x:hidden}
+.in{max-width:1200px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+:focus-visible{outline:3px solid var(--black);outline-offset:3px}
+.dark :focus-visible{outline-color:var(--white)}
+
+.label{display:inline-block;text-transform:uppercase;font-size:11px;font-weight:700;letter-spacing:2.5px;color:var(--on-light-faint);margin-bottom:14px}
+.dark .label{color:var(--on-dark-faint)}
+.title{font-size:clamp(1.9rem,7.5vw,3.25rem);font-weight:900;line-height:1;letter-spacing:-.035em;text-transform:uppercase;text-wrap:balance}
+.head{text-align:center;margin-bottom:40px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--blue);color:var(--white);padding:18px 32px;min-height:54px;border-radius:3px;font:700 13px var(--font);text-transform:uppercase;letter-spacing:.8px;border:0;cursor:pointer;text-decoration:none;transition:transform .25s,box-shadow .25s;text-align:center}
+.btn:hover{transform:translateY(-2px);background:var(--blue-dark);box-shadow:0 8px 32px rgba(29,78,216,.35)}
+
+.btn.full{width:100%}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:200;background:var(--white)}
+nav{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:64px}
+.logo{font-size:22px;font-weight:900;letter-spacing:-.03em;text-transform:uppercase;color:var(--black);text-decoration:none}
+.phone{font-size:13px;font-weight:700;letter-spacing:.4px;color:var(--black);text-decoration:none;border:1px solid rgba(0,0,0,.2);border-radius:3px;padding:10px 14px;white-space:nowrap}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:56px 0 64px;text-align:center}
+.hero::before{content:'ONSTRA';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:clamp(90px,34vw,260px);font-weight:900;color:rgba(0,0,0,.022);letter-spacing:-.05em;white-space:nowrap;pointer-events:none;user-select:none}
+.hero .in{position:relative;z-index:1;max-width:860px}
+.hero h1{font-size:clamp(2.15rem,10.5vw,4.9rem);font-weight:900;line-height:.95;letter-spacing:-.045em;text-transform:uppercase;margin-bottom:24px;text-wrap:balance}
+.hero h1 span{display:block;color:var(--blue)}
+.sub{font-size:18px;font-weight:500;color:var(--text);max-width:560px;margin:0 auto 32px;line-height:1.65}
+.stars-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px 14px;margin-bottom:32px;font-size:15px;font-weight:700;color:var(--text)}
+.stars-row b{color:var(--blue);letter-spacing:2px;font-size:17px}
+.stars-row i{font-style:normal;width:4px;height:4px;border-radius:50%;background:rgba(0,0,0,.25)}
+.note{margin-top:16px;font-size:14px;font-weight:500;color:var(--text)}
+
+/* banner */
+.banner{background:var(--light-bg);border-block:1px solid var(--border);padding:18px 0;overflow:hidden;white-space:nowrap}
+.track{display:inline-block;animation:scroll 32s linear infinite}
+.track span{display:inline-block;padding:0 36px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(0,0,0,.55)}
+.track span::before{content:'● ';margin-right:8px;color:rgba(0,0,0,.3)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+section.s{padding:72px 0}
+
+/* bordered grid */
+.grid{display:grid;grid-template-columns:1fr;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.cell{padding:32px 24px;border-bottom:1px solid var(--line);transition:background .22s;min-width:0}
+.cell:last-child{border-bottom:0}
+.cell:hover{background:var(--black)}
+.cell:hover h3{color:var(--white)}
+.cell:hover p{color:rgba(255,255,255,.6)}
+.cell .n{font-size:11px;font-weight:700;letter-spacing:2px;color:rgba(0,0,0,.25);text-transform:uppercase;margin-bottom:12px;transition:color .22s}
+.cell:hover .n{color:rgba(255,255,255,.35)}
+.cell h3{font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:8px;line-height:1.2;transition:color .22s}
+.cell p{font-size:15px;color:var(--on-light-mute);line-height:1.65;transition:color .22s}
+
+/* dark sections */
+.dark{background:var(--black);color:var(--white)}
+.dark .title{color:var(--white)}
+.big-line{font-size:clamp(1.7rem,7vw,2.6rem);font-weight:900;text-transform:uppercase;letter-spacing:-.035em;line-height:1.02;text-wrap:balance}
+.dark p.copy{font-size:17px;color:rgba(255,255,255,.88);max-width:620px;line-height:1.7}
+.center{text-align:center}
+.center p.copy{margin-inline:auto}
+.strip{padding:72px 0}
+.strip .in{display:flex;flex-direction:column;gap:18px;align-items:center;text-align:center}
+
+/* work */
+.work{border:1px solid var(--dark-line);border-radius:6px;overflow:hidden}
+.work-card{padding:32px 22px;border-bottom:1px solid var(--dark-line);display:grid;gap:14px;min-width:0}
+.work-card:last-child{border-bottom:0}
+.work-card:hover{background:rgba(255,255,255,.025)}
+.ind{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:rgba(255,255,255,.3)}
+.wname{font-size:20px;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1.1}
+.wsite{font-size:12px;color:rgba(255,255,255,.4);text-decoration:none}
+.wsite:hover{color:var(--white)}
+.story{font-size:15px;color:rgba(255,255,255,.72);line-height:1.75}
+.story strong{color:var(--white);font-weight:600}
+.tags{display:flex;flex-wrap:wrap;gap:7px}
+.tags span{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.4);border:1px solid var(--dark-line);padding:4px 11px;border-radius:2px}
+
+/* compare */
+.tbox{overflow-x:auto;border:1px solid var(--line);border-radius:6px}
+table{border-collapse:collapse;width:100%;min-width:600px}
+th,td{text-align:left;padding:16px 20px;border-bottom:1px solid var(--line);font-size:14px;vertical-align:top;line-height:1.5}
+tr:last-child td{border-bottom:0}
+th{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--on-light-faint);background:var(--light-bg)}
+th.us,td.us{background:var(--black);color:var(--white)}
+th.us{color:rgba(255,255,255,.7)}
+td:first-child{font-weight:800;text-transform:uppercase;letter-spacing:-.01em;font-size:13px;white-space:nowrap}
+td:not(:first-child):not(.us){color:var(--on-light-mute)}
+
+/* form */
+.formsec{background:var(--light-bg);padding:72px 0;text-align:center}
+.formsec .in{max-width:640px}
+.formsec .sub{margin-bottom:32px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:6px;padding:26px 20px;text-align:left}
+form{display:grid;gap:18px}
+label{display:flex;flex-direction:column;gap:7px;font-size:13px;font-weight:700;letter-spacing:.2px}
+label small{font-weight:500;color:var(--on-light-faint);font-size:12px}
+input{font:400 16px var(--font);min-height:52px;padding:0 14px;border:1px solid rgba(0,0,0,.22);border-radius:3px;background:var(--white);color:var(--black);width:100%}
+input::placeholder{color:rgba(0,0,0,.35)}
+input[aria-invalid="true"]{border-color:var(--err)}
+.err{font-size:12px;font-weight:500;color:var(--err);min-height:0}
+.step{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--on-light-faint);margin-bottom:10px;display:block}
+.cal{margin-top:22px;min-height:120px}
+.calfall{display:grid;gap:12px;justify-items:center;text-align:center;padding:20px 0 4px}
+.calfall p{font-size:14px;color:var(--on-light-mute)}
+
+footer{padding:32px 0;border-top:1px solid var(--border);font-size:13px;color:var(--on-light-faint)}
+footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px}
+.flogo{font-weight:900;letter-spacing:-.03em;text-transform:uppercase;color:var(--black)}
+
+@media (min-width:820px){
+  nav{min-height:76px}
+  .hero{padding:120px 0 110px}
+  .sub{font-size:19px}
+  section.s{padding:100px 0}
+  .grid.c4{grid-template-columns:repeat(4,1fr)}
+  .grid.c4 .cell{border-bottom:0;border-right:1px solid var(--line);padding:40px 32px}
+  .grid.c4 .cell:last-child{border-right:0}
+  .strip{padding:96px 0}
+  .work-card{grid-template-columns:200px 1fr;gap:48px;padding:48px 52px}
+  .formsec{padding:100px 0}
+  .card{padding:40px}
+  .track span{padding:0 52px}
+}
+@media (prefers-reduced-motion:reduce){.track{animation:none}.btn,.cell{transition:none}html{scroll-behavior:auto}}
+</style>
+
+<header>
+  <nav class="in">
+    <a class="logo" href="#top">Onstra</a>
+    <a class="phone" href="tel:9192950791">(919) 295-0791</a>
+  </nav>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero">
+  <div class="in">
+    <span class="label">For Local Service Businesses</span>
+    <h1>You are losing local jobs to the bigger guys. <span>Let's fix that.</span></h1>
+    <p class="sub">Big corporations are stealing your clients because your online presence looks invisible. We build high-converting, professional websites that prove your business is real and trusted.</p>
+    <div class="stars-row" aria-label="Rated 5 stars on Google">
+      <b aria-hidden="true">★★★★★</b><span>5.0 on Google</span><i></i><span>Eastern NC &amp; Raleigh</span>
+    </div>
+    <a class="btn" href="#qualify">See if your business qualifies &rarr;</a>
+    <p class="note">Free 15-minute call. Takes 30 seconds to start.</p>
+  </div>
+</section>
+
+<div class="banner" aria-hidden="true"><div class="track">
+  <span>Websites</span><span>Local SEO</span><span>Google Business Setup</span><span>Mobile First</span><span>Lead Capture</span><span>Branding</span>
+  <span>Websites</span><span>Local SEO</span><span>Google Business Setup</span><span>Mobile First</span><span>Lead Capture</span><span>Branding</span>
+</div></div>
+
+<!-- BENEFITS -->
+<section class="s">
+  <div class="in">
+    <div class="head"><div><span class="label">What Changes For You</span></div><h2 class="title">Start branding your business today</h2></div>
+    <div class="grid c4">
+      <div class="cell"><div class="n">Be Seen</div><h3>Let people know who you are</h3><p>Your name, your work and your number in one place customers can find at 11pm.</p></div>
+      <div class="cell"><div class="n">Be Trusted</div><h3>Look as big as the big guys</h3><p>A clean, professional site puts you next to the company with the bigger budget and the bigger logo.</p></div>
+      <div class="cell"><div class="n">Be Found</div><h3>Show up when locals search</h3><p>Built for local search, so people in your town find you first, not a national chain.</p></div>
+      <div class="cell"><div class="n">Be Booked</div><h3>Turn visitors into calls</h3><p>Every page points people to one move: call you or request a quote.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="dark strip">
+  <div class="in">
+    <span class="label">Why Us</span>
+    <p class="big-line">Don't lose your jobs to the bigger guys.</p>
+    <p class="copy">Wix gives you a blank screen and a monthly bill. We deliver a fully optimized, live website that locks down your local turf so you can stay focused on your customers.</p>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="dark s" style="padding-top:0">
+  <div class="in">
+    <div class="head" style="padding-top:8px"><div><span class="label">Real Local Businesses</span></div><h2 class="title">Built for owners like you</h2></div>
+    <div class="work">
+      <div class="work-card">
+        <div><div class="ind">Junk Removal</div><div class="wname">Southern Junk Removal</div><a class="wsite" href="https://www.southernjunkremoval.co" target="_blank" rel="noopener">southernjunkremoval.co ↗</a></div>
+        <div><p class="story">Came to us with <strong>nothing but an idea</strong>. No website, no brand, no presence. We built the site and the marketing setup. <strong>They landed their first client.</strong></p></div>
+      </div>
+      <div class="work-card">
+        <div><div class="ind">Food &amp; Restaurant</div><div class="wname">Kabayan Bites</div><a class="wsite" href="https://www.kabayanbite.com" target="_blank" rel="noopener">kabayanbite.com ↗</a></div>
+        <div><p class="story">Rocky Mount's first authentic Filipino restaurant needed a digital home that matched the food. A full site with menu, feast booking and party trays, <strong>designed to bring people through the door</strong> before they arrive.</p></div>
+      </div>
+      <div class="work-card">
+        <div><div class="ind">HVAC</div><div class="wname">Top Air HVAC</div><a class="wsite" href="https://www.topairllc.com" target="_blank" rel="noopener">topairllc.com ↗</a></div>
+        <div><p class="story">Needed more than a website. We built a <strong>field service app</strong> that runs the job from first contact to paid invoice, in English and Spanish.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section class="s">
+  <div class="in">
+    <div class="head"><div><span class="label">How We Compare</span></div><h2 class="title">Onstra vs. the other options</h2></div>
+    <div class="tbox">
+      <table>
+        <thead><tr><th></th><th class="us">Onstra</th><th>Wix / DIY builders</th><th>Big agencies</th></tr></thead>
+        <tbody>
+          <tr><td>Who builds it</td><td class="us">We do, done for you</td><td>You, from a blank screen</td><td>Their team</td></tr>
+          <tr><td>Your time</td><td class="us">A 15-minute call</td><td>Hours of drag and drop</td><td>Meetings and revisions</td></tr>
+          <tr><td>Support</td><td class="us">Local team you call or text</td><td>Help center and chatbots</td><td>Account manager, if you are big enough</td></tr>
+          <tr><td>Lock-in</td><td class="us">You own it. No lock-in.</td><td>Tied to their platform</td><td>Depends on the contract</td></tr>
+          <tr><td>Knows your town</td><td class="us">Eastern NC &amp; Raleigh</td><td>No</td><td>Rarely</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORT -->
+<section class="dark strip">
+  <div class="in">
+    <span class="label">Real People</span>
+    <p class="big-line">No chatbot loops. No overseas call centers.</p>
+    <p class="copy">When you work with us, you get a dedicated local team you can call or text directly whenever you need a quick update.</p>
+  </div>
+</section>
+
+<!-- FORM + BOOK CALL -->
+<section class="formsec" id="qualify">
+  <div class="in">
+    <div id="step1">
+      <span class="label">Step 1</span>
+      <h2 class="title" style="margin-bottom:16px">See if your business qualifies for a custom website upgrade</h2>
+      <p class="sub">Three quick questions. Then pick a time that works for you.</p>
+      <div class="card">
+        <form id="qform" action="https://formspree.io/f/mbggejbn" method="POST" novalidate>
+          <label for="f-biz"><span>What is your business name &amp; industry?</span>
+            <input id="f-biz" name="business" placeholder="e.g., John's Plumbing" autocomplete="organization" required><span class="err" id="e-biz"></span></label>
+          <label for="f-url"><span>What is your current website URL? <small>(Leave blank if you don't have one)</small></span>
+            <input id="f-url" name="website" type="text" inputmode="url" autocomplete="url" placeholder="yourbusiness.com"></label>
+          <label for="f-phone"><span>What is your phone number?</span>
+            <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(919) 555-0123" required><span class="err" id="e-phone"></span></label>
+          <button class="btn full" type="submit" id="submit">See if I qualify &rarr;</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="step2" hidden>
+      <span class="label">Step 2</span>
+      <h2 class="title" style="margin-bottom:16px">Choose your call time below</h2>
+      <p class="sub" style="margin-bottom:0"><strong style="color:var(--black)">Lock in your 15-Minute Local Business Growth Call.</strong> On this quick call, we will look at your biggest competitors, show you exactly why they are winning your jobs, and map out a plan to get your business looking 10x more professional online.</p>
+      <div class="cal" id="cal">
+        <div class="calfall" id="calfall">
+          <a class="btn" href="https://calendly.com/onstrahq" target="_blank" rel="noopener">Pick my call time &rarr;</a>
+          <p>Prefer to talk now? Call <strong>(919) 295-0791</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="in"><span class="flogo">Onstra</span><span>(919) 295-0791 · onstrahq@gmail.com</span><span>© 2026 Onstra. All rights reserved.</span></div></footer>
+
+<script>
+var form=document.getElementById("qform");
+function chk(id,eid,test){
+  var el=document.getElementById(id),e=document.getElementById(eid),v=el.value.trim(),m="";
+  if(!v)m="Required";else if(test&&!test(v))m="Enter a valid phone number";
+  el.setAttribute("aria-invalid",m?"true":"false");e.textContent=m;return !m;
+}
+function showStep2(){
+  document.getElementById("step1").hidden=true;
+  var s=document.getElementById("step2");s.hidden=false;
+  s.scrollIntoView({block:"start"});
+  /* Calendly inline widget: loads on the live site; where the host blocks it, the button above stays. */
+  var box=document.getElementById("cal");
+  var sc=document.createElement("script");
+  sc.src="https://assets.calendly.com/assets/external/widget.js";
+  sc.onload=function(){
+    try{
+      var d=document.createElement("div");d.style.minWidth="280px";d.style.height="700px";
+      box.appendChild(d);
+      window.Calendly.initInlineWidget({url:"https://calendly.com/onstrahq?hide_gdpr_banner=1",parentElement:d});
+      document.getElementById("calfall").hidden=true;
+    }catch(e){}
+  };
+  document.head.appendChild(sc);
+}
+form.addEventListener("submit",function(ev){
+  ev.preventDefault();
+  var ok=[chk("f-biz","e-biz"),chk("f-phone","e-phone",function(v){return v.replace(/\D/g,"").length>=10})].every(Boolean);
+  if(!ok)return;
+  try{
+    fetch(form.action,{method:"POST",body:new FormData(form),headers:{"Accept":"application/json"}}).catch(function(){});
+  }catch(e){}
+  showStep2();
+});
+</script>
