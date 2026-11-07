@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Onstra Websites</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -138,8 +143,53 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20p
   .card{padding:40px}
   .track span{padding:0 52px}
 }
+
+/* mobile fixes */
+@media (max-width:819px){
+  .title,.big-line,.hero h1{letter-spacing:-.02em}
+  .hero{padding:40px 0 48px}
+  .hero::before{display:none}
+  .hero h1{font-size:clamp(2rem,9.6vw,3rem);line-height:1}
+  .label{font-size:12px;color:#555}
+  .dark .label{color:rgba(255,255,255,.6)}
+  .cell .n{color:#666;font-size:12px}
+  .ind{color:rgba(255,255,255,.55);font-size:11px}
+  .wsite{color:rgba(255,255,255,.65);font-size:13px}
+  .tags span{color:rgba(255,255,255,.6)}
+  section.s{padding:48px 0}
+  .strip{padding:48px 0}
+  .head{margin-bottom:28px}
+  .banner{padding:14px 0}
+  .stars-row i{display:none}
+  .dark p.copy,.strip .in{text-align:left;align-items:flex-start}
+  .dark.strip .big-line{text-align:left}
+  .formsec{padding:48px 0}
+  .formsec .in{text-align:left}
+  .formsec .title,.formsec .sub{text-align:left;margin-inline:0}
+  .btn{width:100%}
+  .head{text-align:left}
+  /* comparison table becomes stacked cards */
+  .tbox{border:0;overflow:visible}
+  table,tbody,tr,td{display:block;min-width:0;width:100%}
+  thead{display:none}
+  tr{border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-bottom:14px}
+  td{border-bottom:1px solid var(--line);padding:12px 16px}
+  td:first-child{background:var(--light-bg);font-size:12px;letter-spacing:1.5px;white-space:normal}
+  td[data-l]::before{content:attr(data-l);display:block;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:2px;color:#666}
+  td.us::before{color:rgba(255,255,255,.7)}
+  td:not(:first-child):not(.us){color:#333}
+}
+
+/* sticky mobile CTA */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:150;background:var(--white);border-top:1px solid var(--border);padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:none;transform:translateY(110%);transition:transform .25s}
+.sticky.on{transform:none}
+.sticky .btn{width:100%}
+@media (max-width:819px){.sticky{display:block}footer{padding-bottom:96px}}
 @media (prefers-reduced-motion:reduce){.track{animation:none}.btn,.cell{transition:none}html{scroll-behavior:auto}}
 </style>
+</head>
+<body>
+
 
 <header>
   <nav class="in">
@@ -219,11 +269,11 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20p
       <table>
         <thead><tr><th></th><th class="us">Onstra</th><th>Wix / DIY builders</th><th>Big agencies</th></tr></thead>
         <tbody>
-          <tr><td>Who builds it</td><td class="us">We do, done for you</td><td>You, from a blank screen</td><td>Their team</td></tr>
-          <tr><td>Your time</td><td class="us">A 15-minute call</td><td>Hours of drag and drop</td><td>Meetings and revisions</td></tr>
-          <tr><td>Support</td><td class="us">Local team you call or text</td><td>Help center and chatbots</td><td>Account manager, if you are big enough</td></tr>
-          <tr><td>Lock-in</td><td class="us">You own it. No lock-in.</td><td>Tied to their platform</td><td>Depends on the contract</td></tr>
-          <tr><td>Knows your town</td><td class="us">Eastern NC &amp; Raleigh</td><td>No</td><td>Rarely</td></tr>
+          <tr><td>Who builds it</td><td data-l="Onstra" class="us">We do, done for you</td><td data-l="Wix / DIY">You, from a blank screen</td><td data-l="Big agencies">Their team</td></tr>
+          <tr><td>Your time</td><td data-l="Onstra" class="us">A 15-minute call</td><td data-l="Wix / DIY">Hours of drag and drop</td><td data-l="Big agencies">Meetings and revisions</td></tr>
+          <tr><td>Support</td><td data-l="Onstra" class="us">Local team you call or text</td><td data-l="Wix / DIY">Help center and chatbots</td><td data-l="Big agencies">Account manager, if you are big enough</td></tr>
+          <tr><td>Lock-in</td><td data-l="Onstra" class="us">You own it. No lock-in.</td><td data-l="Wix / DIY">Tied to their platform</td><td data-l="Big agencies">Depends on the contract</td></tr>
+          <tr><td>Knows your town</td><td data-l="Onstra" class="us">Eastern NC &amp; Raleigh</td><td data-l="Wix / DIY">No</td><td data-l="Big agencies">Rarely</td></tr>
         </tbody>
       </table>
     </div>
@@ -276,6 +326,7 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20p
 
 <footer><div class="in"><span class="flogo">Onstra</span><span>(919) 295-0791 · onstrahq@gmail.com</span><span>© 2026 Onstra. All rights reserved.</span></div></footer>
 
+<div class="sticky" id="sticky"><a class="btn" href="#qualify">See if your business qualifies &rarr;</a></div>
 <script>
 var form=document.getElementById("qform");
 function chk(id,eid,test){
@@ -301,6 +352,15 @@ function showStep2(){
   };
   document.head.appendChild(sc);
 }
+(function(){
+  var st=document.getElementById("sticky"),hero=document.querySelector(".hero .btn"),fs=document.getElementById("qualify");
+  var vis={h:true,f:false};
+  function upd(){st.classList.toggle("on",!vis.h&&!vis.f)}
+  if("IntersectionObserver" in window){
+    new IntersectionObserver(function(e){vis.h=e[0].isIntersecting;upd()}).observe(hero);
+    new IntersectionObserver(function(e){vis.f=e[0].isIntersecting;upd()},{threshold:.15}).observe(fs);
+  }
+})();
 form.addEventListener("submit",function(ev){
   ev.preventDefault();
   var ok=[chk("f-biz","e-biz"),chk("f-phone","e-phone",function(v){return v.replace(/\D/g,"").length>=10})].every(Boolean);
@@ -311,3 +371,6 @@ form.addEventListener("submit",function(ev){
   showStep2();
 });
 </script>
+
+</body>
+</html>
